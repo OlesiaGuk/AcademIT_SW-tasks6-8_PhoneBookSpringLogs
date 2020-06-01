@@ -8,6 +8,7 @@ import ru.academits.service.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -31,20 +32,21 @@ public class PhoneBookController {
     @RequestMapping(value = "addContact", method = RequestMethod.POST)
     @ResponseBody
     public ContactValidation addContact(@RequestBody Contact contact) {
+        logger.info("called method addContact with params: \"contact.firstName\" = " + contact.getFirstName() + ", contact.lastName = " + contact.getLastName() + ", contact.phone = " + contact.getPhone());
         return contactService.addContact(contact);
     }
 
     @RequestMapping(value = "deleteContact", method = RequestMethod.POST)
     @ResponseBody
     public void deleteContact(@RequestBody int[] idArray) {
-        logger.info("called method deleteContact");
+        logger.info("called method deleteContact with params: \"idArray\" = " + Arrays.toString(idArray));
         contactService.deleteContact(idArray);
     }
 
     @RequestMapping(value = "getFiltered", method = RequestMethod.GET)
     @ResponseBody
     public List<Contact> getFiltered(@RequestParam("term") String term) {
-        logger.info("called method getFilteredContacts");
+        logger.info("called method getFilteredContacts with params: \"term\" = " + term);
         return contactService.getFilteredContacts(term.toUpperCase());
     }
 }

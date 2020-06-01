@@ -144,7 +144,6 @@ new Vue({
             })
         },
         filterContactList: function () {
-            console.log("поиск:" + this.searchText);
             var self = this;
             $.get("/phoneBook/rpc/api/v1/getFiltered?term=" + self.searchText).done(function (filteredContactListFromServer) {
                 self.rows = self.convertContactList(filteredContactListFromServer);
