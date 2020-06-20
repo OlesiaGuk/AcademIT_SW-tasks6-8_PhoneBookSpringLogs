@@ -36,4 +36,11 @@ public class ContactValidation {
 
         return valid == contactValidation.valid;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 37;
+        int hash = 1;
+        return prime * hash + Boolean.hashCode(valid) + error.hashCode();
+    }
 }

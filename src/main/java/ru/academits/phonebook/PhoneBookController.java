@@ -32,7 +32,7 @@ public class PhoneBookController {
     @RequestMapping(value = "addContact", method = RequestMethod.POST)
     @ResponseBody
     public ContactValidation addContact(@RequestBody Contact contact) {
-        logger.info("called method addContact with params: \"contact.firstName\" = " + contact.getFirstName() + ", contact.lastName = " + contact.getLastName() + ", contact.phone = " + contact.getPhone());
+        logger.info("called method addContact with params: " + contact.toString());
         return contactService.addContact(contact);
     }
 
